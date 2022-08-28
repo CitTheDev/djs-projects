@@ -1,25 +1,20 @@
 const { ChatInputCommandInteraction, Client, EmbedBuilder, SelectMenuBuilder, ActionRowBuilder, ApplicationCommandOptionType, PermissionsBitField } = require("discord.js");
 
 module.exports = {
-    name: "rpanel",
-    description: "Setup your dropdown role system",
-    defaultMemberPermissions: PermissionsBitField.Flags.ManageGuild,
-    dmPermission: false,
-    botPermissions: ["SendMessages"],
-    options: [
-        {
-            name: "description",
-            description: "Provide a description for the dropdown menu",
-            type: ApplicationCommandOptionType.String,
-            required: true
-        },
-        {
-            name: "roles",
-            description: "Provide a list of roles by pinging them",
-            type: ApplicationCommandOptionType.String,
-            required: true
-        }
-    ],
+    data: new SlashCommandBuilder()
+    .setName("rpanel")
+    .setDescription("Setup your dropdown role system")
+    .setDefaultMemberPermissions(PermissionsBitField.Flags.ManageGuild)
+    .setDMPermission(false)
+    .addStringOption((option1) => option1
+    .setName("description")
+    .setDescription("Provide a description for the dropdown menu")
+    .setRequired(true)
+    )
+    .addStringOption((option2) => option2
+    .setName("roles")
+    .setDescription("Provide a list of roles by pinging them")
+    .setRequired(true)),
     /**
      * @param {ChatInputCommandInteraction} interaction
      * @param {Client} client
